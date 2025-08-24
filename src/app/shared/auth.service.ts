@@ -23,16 +23,6 @@ export class AuthService {
     })
   }
 
-  register(email: string, password: string){
-    this.fireAuth.createUserWithEmailAndPassword(email, password).then(() => {
-      console.log('Successful registration');
-      this.router.navigate(['/']);
-    }, err => {
-      console.error(err);
-      this.router.navigate(['/register']);
-    });
-  }
-
   logout(){
     this.fireAuth.signOut().then(() => {
       localStorage.removeItem('token');

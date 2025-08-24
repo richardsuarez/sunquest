@@ -12,7 +12,7 @@ export const routes: Routes = [
       },
       {
         path: 'home',
-        loadChildren: () => import('./modules/home-page/home-page.module').then(m => m.HomePageModule)
+        loadChildren: () => import('./modules/home-page/home.module').then(m => m.HomePageModule)
       },
     ]
   }

@@ -13,9 +13,6 @@
             <mat-icon matSuffix *ngIf="isVisible" (click)="isVisible = false;">visibility_off</mat-icon>
             <mat-error *ngIf="form_login.controls.password.hasError('Invalid')">Invalid email</mat-error>
         </mat-form-field>
-        <div class="forgot-password">
-            <span style="color: #1E7CD8;">Forgot your password?</span>
-        </div>
         <button mat-raised-button style="background-color: #ED2D89; color: white" (click)="signIn()">Sign In</button>
     </form>
 

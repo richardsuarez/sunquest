@@ -10,7 +10,7 @@ import { AngularFireModule } from '@angular/fire/compat'
 import { environment } from '../environment/environment';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { LoginModule } from './modules/login/login.module';
-import { HomePageModule } from './modules/home-page/home-page.module';
+import { HomePageModule } from './modules/home-page/home.module';
 import { LayoutModule } from '@angular/cdk/layout'
 
 @NgModule({
