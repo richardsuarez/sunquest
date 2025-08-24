@@ -54,7 +54,7 @@ export class LoginComponent implements OnInit, OnDestroy{
     }
   }
 
-  signUp(){
-    
+  googleSignIn(){
+    this.auth.signInWithGoogle();
   }
 }
