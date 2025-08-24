@@ -8,22 +8,28 @@ import { getAuth, provideAuth } from '@angular/fire/auth';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { AngularFireModule } from '@angular/fire/compat'
 import { environment } from '../environment/environment';
-import { HomePageComponent } from './modules/home-page/home-page.component';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { LoginModule } from './modules/login/login.module';
+import { HomePageModule } from './modules/home-page/home-page.module';
+import { LayoutModule } from '@angular/cdk/layout'
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomePageComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
+    LoginModule,
+    HomePageModule,
+    LayoutModule,
   ],
   providers: [
     provideFirebaseApp(() => initializeApp({"projectId":"sunquest-62a90","appId":"1:648849314151:web:4a67c249f5e1a29cf19fc2","storageBucket":"sunquest-62a90.firebasestorage.app","apiKey":"AIzaSyCAVaASCjikzai6HCRY7QolaKC0dTd7trA","authDomain":"sunquest-62a90.firebaseapp.com","messagingSenderId":"648849314151"})),
     provideAuth(() => getAuth()),
-    provideFirestore(() => getFirestore())
+    provideFirestore(() => getFirestore()),
+    provideAnimationsAsync()
   ],
   bootstrap: [AppComponent]
 })

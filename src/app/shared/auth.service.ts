@@ -14,10 +14,32 @@ export class AuthService {
 
   login(email: string, password: string){
     this.fireAuth.signInWithEmailAndPassword(email, password).then( () => {
-      localStorage.setItem('token', 'true')
+      localStorage.setItem('token', 'true');
+      console.log('Successful login')
+      this.router.navigate(['/home'])
     }, error => {
       console.error(error);
-      this.router.navigateByUrl('/login')
+      this.router.navigate(['/'])
+    })
+  }
+
+  register(email: string, password: string){
+    this.fireAuth.createUserWithEmailAndPassword(email, password).then(() => {
+      console.log('Successful registration');
+      this.router.navigate(['/']);
+    }, err => {
+      console.error(err);
+      this.router.navigate(['/register']);
+    });
+  }
+
+  logout(){
+    this.fireAuth.signOut().then(() => {
+      localStorage.removeItem('token');
+      console.log('Successful Log out');
+      this.router.navigate(['/']);
+    }, err => {
+      console.error(err);
     })
   }
 }
