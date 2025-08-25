@@ -11,8 +11,8 @@ export const routes: Routes = [
 				pathMatch: 'full',
       },
       {
-        path: 'home',
-        loadChildren: () => import('./modules/home-page/home.module').then(m => m.HomePageModule)
+        path: 'main',
+        loadChildren: () => import('./modules/main/main.module').then(m => m.MainModule)
       },
     ]
   }

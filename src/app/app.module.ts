@@ -10,7 +10,7 @@ import { AngularFireModule } from '@angular/fire/compat'
 import { environment } from '../environment/environment';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { LoginModule } from './modules/login/login.module';
-import { HomePageModule } from './modules/home-page/home.module';
+import { MainModule } from './modules/main/main.module';
 import { LayoutModule } from '@angular/cdk/layout'
 
 @NgModule({
@@ -22,7 +22,7 @@ import { LayoutModule } from '@angular/cdk/layout'
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
     LoginModule,
-    HomePageModule,
+    MainModule,
     LayoutModule,
   ],
   providers: [

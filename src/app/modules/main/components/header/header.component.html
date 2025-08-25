@@ -1,0 +1,18 @@
+<div class="container">
+    <div class="sub-container">
+        <div style="cursor: pointer" routerLink="/main">
+            <img src="../../../../assets/logo.png" alt="Sun Quest logo" width="150px">
+        </div>
+        <nav *ngIf="!isMobile" class="menu">
+            <div class="shortcut" routerLink="/main/users">Users</div>
+            <div class="shortcut" routerLink="/main/book">Bookings</div>
+            <div class="shortcut" [matMenuTriggerFor]="menu">
+                Reports
+            </div>
+            <mat-menu #menu="matMenu">
+                <button mat-menu-item>Book Report</button>
+                <button mat-menu-item>Other Report</button>
+            </mat-menu>
+        </nav>
+    </div>
+</div>
