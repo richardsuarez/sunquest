@@ -1,3 +1,17 @@
 <div class="container">
-    
+    <div class="headers">
+        <h1>Users</h1>
+        <button mat-button mat-raised-button style="background-color: #ED2D89; color: white">Add User</button>
+    </div>
+    <form class="search">
+        <mat-form-field appearance="outline" subscriptSizing="dynamic" 
+            [class.form-field]="!isMobile" [class.form-field-mobile]="isMobile">
+            <input type="text" matInput [formControl]="searchUser"
+                [placeholder]="!isMobile ? 'Search by first name, last name or telephone number' : 'Search user'">
+        </mat-form-field>
+        <button mat-icon-button class="search-button" color="primary" 
+            [disabled]="searchUser.value?.length === 0" type="submit">
+            <mat-icon>search</mat-icon>
+        </button>
+    </form>
 </div>

@@ -10,6 +10,10 @@ import { MatMenuModule } from '@angular/material/menu';
 import { RouterLink } from '@angular/router';
 import { UsersComponent } from './components/users/users.component';
 import { BookComponent } from './components/book/book.component';
+import { MatButtonModule, MatIconButton } from "@angular/material/button";
+import { MatFormFieldModule } from '@angular/material/form-field'
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
 
 
 @NgModule({
@@ -22,10 +26,15 @@ import { BookComponent } from './components/book/book.component';
   ],
   imports: [
     CommonModule,
+    ReactiveFormsModule,
     MainRoutingModule,
     MatMenuModule,
     MatIconModule,
-    RouterLink
-  ]
+    RouterLink,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatIconButton
+]
 })
 export class MainModule { }
