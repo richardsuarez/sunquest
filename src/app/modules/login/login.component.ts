@@ -3,7 +3,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Subject, takeUntil } from 'rxjs';
 import { AuthService } from '../../shared/auth.service';
-import { Router } from '@angular/router';
+import packageJson from '../../../../package.json';
 
 @Component({
   selector: 'app-login',
@@ -14,11 +14,12 @@ export class LoginComponent implements OnInit, OnDestroy{
 
   isMobile!: boolean; 
   isVisible = false;
+  appVersion = packageJson.version
+
   destroy$ = new Subject<void>();
   constructor(
     readonly breakpoints: BreakpointObserver,
     private readonly auth: AuthService,
-    private readonly router: Router,
    ){}
 
    ngOnInit(){

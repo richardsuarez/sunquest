@@ -1,14 +1,16 @@
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
 })
-export class HeaderComponent implements OnInit{
+export class HeaderComponent implements OnInit, OnDestroy{
 
   isMobile!: boolean
+  destroy$ = new Subject<void>()
   constructor(
     private readonly breakpoints: BreakpointObserver,
   ){}
@@ -20,6 +22,10 @@ export class HeaderComponent implements OnInit{
     ]).subscribe(res => {
       this.isMobile = res.matches
     })
+  }
+
+  ngOnDestroy(){
+    this.destroy$.complete()
   }
 
 }
