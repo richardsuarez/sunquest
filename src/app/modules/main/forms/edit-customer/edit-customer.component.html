@@ -1,0 +1,178 @@
+<div class="container">
+    <div class="header" (click)="navigateBack()">
+        <mat-icon color="primary">arrow_back_ios</mat-icon>
+        <h2>Customers</h2>
+    </div>
+    <div class="body">
+        <h1>{{ crudTitle() }} Customer</h1>
+        <form *ngIf="!isMobile" [formGroup]="customerForm" class="form-desktop">
+            <div style="display: flex; justify-content: space-between; gap: 20px !important">
+                <mat-form-field floatLabel="always" appearance="outline" style="width: 100%">
+                    <mat-label>First Name</mat-label>
+                    <input type="text" matInput required formControlName="firstName">
+                </mat-form-field>
+
+                <mat-form-field floatLabel="always" appearance="outline" style="width: 100%">
+                    <mat-label>Last Name</mat-label>
+                    <input type="text" matInput required formControlName="lastName">
+                </mat-form-field>
+            </div>
+
+            <div style="display: flex; justify-content: space-between; gap: 20px !important">
+                <mat-form-field floatLabel="always" appearance="outline" style="width: 100%">
+                    <mat-label>Middle Name</mat-label>
+                    <input type="text" matInput formControlName="middleName">
+                </mat-form-field>
+                <mat-form-field floatLabel="always" appearance="outline" style="width: 100%">
+                    <mat-label>Email</mat-label>
+                    <input type="text" matInput formControlName="email">
+                </mat-form-field>
+            </div>
+
+            <div style="display: flex; justify-content: space-between; gap: 20px !important">
+                <mat-form-field floatLabel="always" appearance="outline">
+                    <mat-label>Title</mat-label>
+                    <mat-select matInput formControlName="title">
+                        <mat-option value="Mr.">Mr.</mat-option>
+                        <mat-option value="Mrs.">Mrs.</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field floatLabel="always" appearance="outline">
+                    <mat-label>Phone</mat-label>
+                    <input type="text" matInput formControlName="phone" required placeholder="### ### ####">
+                </mat-form-field>
+                <mat-form-field floatLabel="always" appearance="outline">
+                    <mat-label>Telephone</mat-label>
+                    <input type="text" matInput formControlName="telephone">
+                </mat-form-field>
+            </div>
+            <mat-form-field floatLabel="always" appearance="outline" style="width: 100% !important">
+                <mat-label>Address 1</mat-label>
+                <input type="text" matInput required formControlName="address1">
+            </mat-form-field>
+
+            <mat-form-field floatLabel="always" appearance="outline" style="width: 100% !important">
+                <mat-label>Address 2</mat-label>
+                <input type="text" matInput formControlName="address2">
+            </mat-form-field>
+
+            <div style="display: flex; justify-content: space-between; gap: 20px !important">
+                <mat-form-field floatLabel="always" appearance="outline">
+                    <mat-label>Building</mat-label>
+                    <input type="text" matInput formControlName="bldg">
+                </mat-form-field>
+                <mat-form-field floatLabel="always" appearance="outline">
+                    <mat-label>Apartment</mat-label>
+                    <input type="text" matInput formControlName="apt">
+                </mat-form-field>
+                <mat-form-field floatLabel="always" appearance="outline">
+                    <mat-label>City</mat-label>
+                    <input type="text" matInput formControlName="city">
+                </mat-form-field>
+                <mat-form-field floatLabel="always" appearance="outline">
+                    <mat-label>State</mat-label>
+                    <mat-select formControlName="state">
+                        <mat-option value="FL">FL</mat-option>
+                        <mat-option value="NY">NY</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field floatLabel="always" appearance="outline">
+                    <mat-label>Zip Code</mat-label>
+                    <input type="text" matInput formControlName="zipCode">
+                </mat-form-field>
+            </div>
+        </form>
+
+        <form *ngIf="isMobile" [formGroup]="customerForm" class="form-mobile">
+            <mat-form-field floatLabel="always" appearance="outline" style="width: 100%">
+                <mat-label>First Name</mat-label>
+                <input type="text" matInput required formControlName="firstName">
+            </mat-form-field>
+
+            <mat-form-field floatLabel="always" appearance="outline" style="width: 100%">
+                <mat-label>Last Name</mat-label>
+                <input type="text" matInput required formControlName="lastName">
+            </mat-form-field>
+
+            <div style="display: flex; justify-content: space-between; gap: 20px !important; width: 100%">
+                <mat-form-field floatLabel="always" appearance="outline">
+                    <mat-label>Middle Name</mat-label>
+                    <input type="text" matInput formControlName="middleName">
+                </mat-form-field>
+                <mat-form-field floatLabel="always" appearance="outline">
+                    <mat-label>Title</mat-label>
+                    <mat-select matInput formControlName="title">
+                        <mat-option value="Mr.">Mr.</mat-option>
+                        <mat-option value="Mrs.">Mrs.</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <mat-form-field floatLabel="always" appearance="outline" style="width: 100%">
+                <mat-label>Email</mat-label>
+                <input type="text" matInput formControlName="email">
+            </mat-form-field>
+
+            <div style="display: flex; justify-content: space-between; gap: 20px !important; width: 100%">
+                <mat-form-field floatLabel="always" appearance="outline">
+                    <mat-label>Phone</mat-label>
+                    <input type="text" matInput formControlName="phone" required placeholder="### ### ####">
+                </mat-form-field>
+                <mat-form-field floatLabel="always" appearance="outline">
+                    <mat-label>Telephone</mat-label>
+                    <input type="text" matInput formControlName="telephone">
+                </mat-form-field>
+            </div>
+
+            <mat-form-field floatLabel="always" appearance="outline" style="width: 100% !important">
+                <mat-label>Address 1</mat-label>
+                <input type="text" matInput required formControlName="address1">
+            </mat-form-field>
+
+            <mat-form-field floatLabel="always" appearance="outline" style="width: 100% !important">
+                <mat-label>Address 2</mat-label>
+                <input type="text" matInput formControlName="address2">
+            </mat-form-field>
+
+            <div style="display: flex; justify-content: space-between; gap: 20px !important; width: 100%">
+                <mat-form-field floatLabel="always" appearance="outline">
+                    <mat-label>Building</mat-label>
+                    <input type="text" matInput formControlName="bldg">
+                </mat-form-field>
+                <mat-form-field floatLabel="always" appearance="outline">
+                    <mat-label>Apartment</mat-label>
+                    <input type="text" matInput formControlName="apt">
+                </mat-form-field>
+            </div>
+            <div style="display: flex; justify-content: space-between; gap: 20px !important; width: 100%">
+                <mat-form-field floatLabel="always" appearance="outline">
+                    <mat-label>City</mat-label>
+                    <input type="text" matInput formControlName="city">
+                </mat-form-field>
+                <mat-form-field floatLabel="always" appearance="outline">
+                    <mat-label>State</mat-label>
+                    <mat-select formControlName="state">
+                        <mat-option value="FL">FL</mat-option>
+                        <mat-option value="NY">NY</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field floatLabel="always" appearance="outline">
+                    <mat-label>Zip Code</mat-label>
+                    <input type="text" matInput formControlName="zipCode">
+                </mat-form-field>
+            </div>
+        </form>
+        <div [class.form-actions-desktop]="!isMobile" [class.form-actions-mobile]="isMobile">
+            <button mat-raised-button (click)="navigateBack()" style="color: black">Back</button>
+            <button mat-raised-button type="submit" (click)="onSubmit()"
+                style="background-color: #ED2D89; color: white">
+                <!--[disabled]="ctx.savingDiscrepancy">-->
+                <!-- <mat-icon *ngIf="ctx.savingDiscrepancy && !ctx.errorSavingDiscrepancy">
+                    <mat-spinner diameter="18"></mat-spinner>
+                </mat-icon> 
+                <p *ngIf="!ctx.savingDiscrepancy">Save</p>
+                <p *ngIf="ctx.savingDiscrepancy">Saving...</p>-->
+                Save
+            </button>
+        </div>
+    </div>
+</div>

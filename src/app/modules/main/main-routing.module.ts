@@ -2,12 +2,14 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { MainComponent } from './container/main.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { UsersComponent } from './components/users/users.component';
+import { CustomerComponent } from './components/customers/customer.component';
 import { BookComponent } from './components/book/book.component';
+import { EditCustomerComponent } from './forms/edit-customer/edit-customer.component';
+import { CanDeactivateGuard } from '../../shared/can-deactivate-guard.service';
 
 const routes: Routes = [
-  { 
-    path: '', 
+  {
+    path: '',
     component: MainComponent,
     children: [
       {
@@ -15,8 +17,13 @@ const routes: Routes = [
         component: DashboardComponent
       },
       {
-        path: 'users',
-        component: UsersComponent
+        path: 'customers',
+        component: CustomerComponent,
+      },
+      {
+        path: 'customers/:crud',
+        component: EditCustomerComponent,
+        canDeactivate: [CanDeactivateGuard]
       },
       {
         path: 'book',

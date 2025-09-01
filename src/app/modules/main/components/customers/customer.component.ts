@@ -1,21 +1,23 @@
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 
 @Component({
-  selector: 'app-users',
-  templateUrl: './users.component.html',
-  styleUrl: './users.component.scss'
+  selector: 'app-customers',
+  templateUrl: './customer.component.html',
+  styleUrl: './customer.component.scss'
 })
-export class UsersComponent implements OnInit, OnDestroy{
+export class CustomerComponent implements OnInit, OnDestroy{
 
   isMobile!: boolean
   destroy$ = new Subject<void>()
   
-  searchUser = new FormControl<string | null>('')
+  searchCustomer = new FormControl<string | null>('')
   constructor(
     private readonly breakpoints: BreakpointObserver,
+    private router: Router,
   ){}
 
   ngOnInit(){
@@ -29,6 +31,10 @@ export class UsersComponent implements OnInit, OnDestroy{
 
   ngOnDestroy(){
     this.destroy$.complete()
+  }
+
+  addCustomer(){
+    this.router.navigate(['/customers/new'])
   }
 
 }

@@ -4,7 +4,7 @@
             <img src="../../../../assets/logo.png" alt="Sun Quest logo" width="150px">
         </div>
         <nav *ngIf="!isMobile" class="menu">
-            <div class="shortcut" routerLink="/main/users">Users</div>
+            <div class="shortcut" routerLink="/main/customers">Customers</div>
             <div class="shortcut" routerLink="/main/book">Bookings</div>
             <div class="shortcut" [matMenuTriggerFor]="menu">
                 Reports
@@ -19,7 +19,7 @@
                 <mat-icon>menu</mat-icon>
             </button>
             <mat-menu #menu_mobile="matMenu">
-                <button mat-menu-item routerLink="/main/users">Users</button>
+                <button mat-menu-item routerLink="/main/customers">Customers</button>
                 <button mat-menu-item routerLink="/main/bookings">Bookings</button>
                 <button mat-menu-item [matMenuTriggerFor]="menu_report">Reports</button>
                 <mat-menu #menu_report="matMenu">
