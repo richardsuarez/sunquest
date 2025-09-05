@@ -4,7 +4,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { map, Observable, Subject, takeUntil } from 'rxjs';
-import { ConfirmationComponent } from '../../components/confirmation/confirmation.component';
+import { ConfirmationComponent } from '../../../shared/confirmation/confirmation.component';
 
 @Component({
   selector: 'app-edit-customer',

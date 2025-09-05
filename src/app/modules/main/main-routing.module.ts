@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { MainComponent } from './container/main.component';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { CustomerComponent } from './components/customers/customer.component';
-import { BookComponent } from './components/book/book.component';
-import { EditCustomerComponent } from './forms/edit-customer/edit-customer.component';
+import { MainComponent } from './main.component';
+import { DashboardComponent } from '../dashboard/dashboard.component';
+import { CustomerComponent } from '../customers/customer.component';
+import { BookComponent } from '../book/book.component';
+import { EditCustomerComponent } from '../customers/form/edit-customer.component';
 import { CanDeactivateGuard } from '../../shared/can-deactivate-guard.service';
 
 const routes: Routes = [

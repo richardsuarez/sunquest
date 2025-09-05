@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { BookComponent } from './components/book/book.component';
-import { CustomerComponent } from './components/customers/customer.component';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { EditCustomerComponent } from './forms/edit-customer/edit-customer.component';
-import { HeaderComponent } from './components/header/header.component';
-import { MainComponent } from './container/main.component';
+import { BookComponent } from '../book/book.component';
+import { CustomerComponent } from '../customers/customer.component';
+import { DashboardComponent } from '../dashboard/dashboard.component';
+import { EditCustomerComponent } from '../customers/form/edit-customer.component';
+import { HeaderComponent } from './header/header.component';
+import { MainComponent } from './main.component';
 import { MainRoutingModule } from './main-routing.module';
 import { MatButtonModule, MatIconButton } from "@angular/material/button";
 import { MatDialogModule } from '@angular/material/dialog'
@@ -18,7 +18,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
 import { MatSelectModule } from '@angular/material/select'
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
-import { ConfirmationComponent } from './components/confirmation/confirmation.component';
+import { ConfirmationComponent } from '../../shared/confirmation/confirmation.component';
 
 
 @NgModule({
