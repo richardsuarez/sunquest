@@ -1,22 +1,27 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, DocumentChangeAction } from '@angular/fire/compat/firestore';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
-import { SavingCustomer } from '../modules/customers/models/customer.models';
-import { Observable, of } from 'rxjs';
+import { Customer, SearchCriteria } from '../modules/customers/models/customer.models';
+import { from, Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
 
-  constructor(private afs : AngularFirestore, private fireStorage : AngularFireStorage) { }
+  constructor(private afs: AngularFirestore, private fireStorage: AngularFireStorage) { }
 
   // #region Customer
 
-  addCustomer(customer: SavingCustomer): Observable<DocumentChangeAction<unknown>[]>{
-    customer.id = this.afs.createId();
-    return this.afs.collection('/Students').snapshotChanges()
+  addCustomer(customer: Customer): Observable<void> {
+    const id = this.afs.createId();
+    customer.id = id;
+    return from(
+      this.afs.collection<Customer>('/Students').doc(id).set(customer)
+    );
   }
+
+  //getCustomerList(criteria: SearchCriteria): Observable
 
   // #endregion Customer
 }

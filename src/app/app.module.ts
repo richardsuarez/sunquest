@@ -11,7 +11,10 @@ import { environment } from '../environment/environment';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { LoginModule } from './modules/login/login.module';
 import { MainModule } from './modules/main/main.module';
-import { LayoutModule } from '@angular/cdk/layout'
+import { LayoutModule } from '@angular/cdk/layout';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { CustomerModule } from './modules/customers/customer.module';
 
 @NgModule({
   declarations: [
@@ -24,6 +27,9 @@ import { LayoutModule } from '@angular/cdk/layout'
     LoginModule,
     MainModule,
     LayoutModule,
+    StoreModule.forRoot({}),
+    EffectsModule.forRoot([]),
+    CustomerModule
   ],
   providers: [
     provideFirebaseApp(() => initializeApp({"projectId":"sunquest-62a90","appId":"1:648849314151:web:4a67c249f5e1a29cf19fc2","storageBucket":"sunquest-62a90.firebasestorage.app","apiKey":"AIzaSyCAVaASCjikzai6HCRY7QolaKC0dTd7trA","authDomain":"sunquest-62a90.firebaseapp.com","messagingSenderId":"648849314151"})),
@@ -34,3 +40,4 @@ import { LayoutModule } from '@angular/cdk/layout'
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+

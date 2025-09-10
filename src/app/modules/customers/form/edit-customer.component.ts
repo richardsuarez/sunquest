@@ -4,7 +4,12 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { map, Observable, Subject, takeUntil } from 'rxjs';
-import { ConfirmationComponent } from '../../../shared/confirmation/confirmation.component';
+import { PopupComponent } from '../../../shared/popup/popup.component';
+import { Store } from '@ngrx/store';
+import { CustomerState } from '../store/customer.state';
+import { addCustomerStart } from '../store/customer.actions';
+import { savingCustomer } from '../store/customer.selector'
+import { AppError } from '../../../shared/app-error.model';
 
 @Component({
   selector: 'app-edit-customer',
@@ -15,12 +20,17 @@ export class EditCustomerComponent implements OnInit, OnDestroy{
   crud!: string;
   destroy$ = new Subject<void>()
   isMobile!: boolean;
+  savingCustomer$!: Observable<boolean>;
 
   customerForm: FormGroup<{
-    firstName: FormControl<string | null>;
-    lastName: FormControl<string | null>;
-    middleName: FormControl<string | null>;
-    title: FormControl<string | null>;
+    primaryFirstName: FormControl<string | null>;
+    primaryLastName: FormControl<string | null>;
+    primaryMiddleName: FormControl<string | null>;
+    primaryTitle: FormControl<string | null>;
+    secondaryFirstName: FormControl<string | null>;
+    secondaryLastName: FormControl<string | null>;
+    secondaryMiddleName: FormControl<string | null>;
+    secondaryTitle: FormControl<string | null>;
     email: FormControl<string | null>;
     telephone: FormControl<string | null>;
     phone: FormControl<string | null>;
@@ -32,10 +42,14 @@ export class EditCustomerComponent implements OnInit, OnDestroy{
     state: FormControl<string | null>;
     zipCode: FormControl<string | null>;
   }> = new FormGroup({
-    firstName: new FormControl<string | null>('', Validators.required),
-    lastName: new FormControl<string | null>('', Validators.required),
-    middleName: new FormControl<string | null>(''),
-    title: new FormControl<string | null>('', Validators.required),
+    primaryFirstName: new FormControl<string | null>('', Validators.required),
+    primaryLastName: new FormControl<string | null>('', Validators.required),
+    primaryMiddleName: new FormControl<string | null>(''),
+    primaryTitle: new FormControl<string | null>('', Validators.required),
+    secondaryFirstName: new FormControl<string | null>(''),
+    secondaryLastName: new FormControl<string | null>(''),
+    secondaryMiddleName: new FormControl<string | null>(''),
+    secondaryTitle: new FormControl<string | null>(''),
     email: new FormControl<string | null>('', Validators.email),
     telephone: new FormControl<string | null>(''),
     phone: new FormControl<string | null>('', Validators.required),
@@ -53,7 +67,10 @@ export class EditCustomerComponent implements OnInit, OnDestroy{
     private readonly route: ActivatedRoute,
     private readonly router: Router,
     private readonly matDialog: MatDialog,
-  ){}
+    private readonly store: Store<CustomerState>,
+  ){
+    this.savingCustomer$ = store.select(savingCustomer)
+  }
 
   ngOnInit(){
     this.crud = this.route.snapshot.paramMap.get('crud') ?? '';
@@ -74,9 +91,19 @@ export class EditCustomerComponent implements OnInit, OnDestroy{
       // only show the popup if the user modifies any fields AND DISCREPANCY VIEW MODAL IN STATE IS NOT NULL 
       // when discrepancyViewModel is null means user SUBMITS form for add/edit discrepancy and we won't show popup message when submit
       if(this.customerForm && !this.customerForm.pristine){
-        //&& this.currentDiscrepancyInState){
-        const dialogRef = this.matDialog.open(ConfirmationComponent);
+        const dialogRef = this.matDialog.open(
+          PopupComponent,
+          {
+            data:{
+              title: 'Save Changes',
+              message: 'Are you sure you want to leave? Your changes will not be saved',
+              cancelButton: 'Discard',
+              successButton: 'Save',
+            }
+          }
+        );
         return dialogRef.afterClosed().pipe(
+          takeUntil(this.destroy$),
           map(result => {
             switch(result){
               case 'Success': this.onSubmit(); return false;
@@ -97,6 +124,10 @@ export class EditCustomerComponent implements OnInit, OnDestroy{
   }
 
   onSubmit(){
-
+    if(this.customerForm.valid){
+      this.store.dispatch(addCustomerStart({customer: {id: '', ...this.customerForm.getRawValue()}}))
+    } else {
+      this.customerForm.markAsTouched();
+    }
   }
 }

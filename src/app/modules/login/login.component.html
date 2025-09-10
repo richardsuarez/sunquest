@@ -14,15 +14,7 @@
             <mat-error *ngIf="form_login.controls.password.hasError('Invalid')">Invalid email</mat-error>
         </mat-form-field>
         <button mat-raised-button style="background-color: #ED2D89; color: white" type="submit" (click)="signIn()">Sign In</button>
-        <div class="divider">
-            <mat-divider></mat-divider>
-            Or
-            <mat-divider></mat-divider>
-        </div>
-        <div class="button-google" (click)="googleSignIn()">
-            <img src="assets/google-logo.png" alt="google" width="20px">
-            Sign in with Google
-        </div>
+        
         <div class="version">
             Version: {{ appVersion }}
         </div>
