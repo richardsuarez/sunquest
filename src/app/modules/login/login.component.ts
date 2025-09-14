@@ -54,8 +54,4 @@ export class LoginComponent implements OnInit, OnDestroy{
       this.form_login.markAllAsTouched();
     }
   }
-
-  googleSignIn(){
-    this.auth.signInWithGoogle();
-  }
 }

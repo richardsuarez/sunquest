@@ -1,40 +1,32 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { HeaderComponent } from './components/header/header.component';
-import { MainComponent } from './container/main.component';
+import { BookComponent } from '../book/book.component';
+import { DashboardComponent } from '../dashboard/dashboard.component';
+import { HeaderComponent } from '../header/header.component';
+import { MainComponent } from './main.component';
 import { MainRoutingModule } from './main-routing.module';
-import { MatIconModule } from '@angular/material/icon';
-import { MatMenuModule } from '@angular/material/menu';
-import { RouterLink } from '@angular/router';
-import { UsersComponent } from './components/users/users.component';
-import { BookComponent } from './components/book/book.component';
-import { MatButtonModule, MatIconButton } from "@angular/material/button";
-import { MatFormFieldModule } from '@angular/material/form-field'
 import { ReactiveFormsModule } from '@angular/forms';
-import { MatInputModule } from '@angular/material/input';
-
+import { PopupComponent } from '../../shared/popup/popup.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [
     MainComponent,
-    HeaderComponent,
     DashboardComponent,
-    UsersComponent,
-    BookComponent
+    BookComponent,
+    PopupComponent,
+    HeaderComponent,
   ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
     MainRoutingModule,
-    MatMenuModule,
+    MatDialogModule,
     MatIconModule,
-    RouterLink,
-    MatButtonModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatIconButton
+    MatButtonModule
 ]
 })
 export class MainModule { }
