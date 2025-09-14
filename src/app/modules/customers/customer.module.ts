@@ -29,8 +29,8 @@ import { EditCustomerComponent } from "./form/edit-customer.component";
     imports: [
         CommonModule,
         ReactiveFormsModule,
-        StoreModule.forFeature(CUSTOMER_NAME, customerReducer),
-        EffectsModule.forFeature([CustomerEffects]),
+        /* StoreModule.forFeature(CUSTOMER_NAME, customerReducer),
+        EffectsModule.forFeature([CustomerEffects]), */
         MatMenuModule,
         MatIconModule,
         RouterLink,

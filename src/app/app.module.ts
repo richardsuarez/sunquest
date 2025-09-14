@@ -15,6 +15,8 @@ import { LayoutModule } from '@angular/cdk/layout';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { CustomerModule } from './modules/customers/customer.module';
+import { customerReducer } from './modules/customers/store/customer.reducers';
+import { CustomerEffects } from './modules/customers/store/customer.effects';
 
 @NgModule({
   declarations: [
@@ -27,8 +29,10 @@ import { CustomerModule } from './modules/customers/customer.module';
     LoginModule,
     MainModule,
     LayoutModule,
-    StoreModule.forRoot({}),
-    EffectsModule.forRoot([]),
+    StoreModule.forRoot({
+      customer: customerReducer
+    }),
+    EffectsModule.forRoot([CustomerEffects]),
     CustomerModule
   ],
   providers: [

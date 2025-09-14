@@ -9,6 +9,8 @@ import { MainRoutingModule } from './main-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { PopupComponent } from '../../shared/popup/popup.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { MatDialogModule } from '@angular/material/dialog';
     CommonModule,
     ReactiveFormsModule,
     MainRoutingModule,
-    MatDialogModule
+    MatDialogModule,
+    MatIconModule,
+    MatButtonModule
 ]
 })
 export class MainModule { }
